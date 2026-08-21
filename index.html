@@ -7,7 +7,10 @@
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f7f3f0;
+            /* خلفية صورة كاملة للشاشة */
+            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), 
+                        url('https://picsum.photos/id/1015/1920/1080') no-repeat center center fixed;
+            background-size: cover;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -17,28 +20,21 @@
         }
 
         .card {
-            background: #ffffff;
-            padding: 35px 30px;
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(8px);
+            padding: 40px 30px;
             border-radius: 25px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
             text-align: center;
             max-width: 440px;
             width: 85%;
             position: relative;
-            border: 1px solid #eaeaea;
-        }
-
-        .img-container img {
-            width: 100%;
-            max-height: 220px;
-            object-fit: cover;
-            border-radius: 15px;
-            margin-bottom: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
         }
 
         h1 {
             color: #2b2d42;
-            font-size: 17px;
+            font-size: 18px;
             line-height: 1.6;
             margin-bottom: 25px;
             font-weight: 500;
@@ -85,11 +81,6 @@
 
     <!-- Main Card -->
     <div class="card" id="mainCard">
-        <div class="img-container">
-            <!-- السطر 77 المُعدل برابط مباشر وسريع -->
-            <img id="mainImg" src="https://picsum.photos/id/1015/600/400" alt="Manchester by the sea">
-        </div>
-
         <h1 id="questionText">
             Midst all this quiet and passing routine, could a single conversation create a new wave? 🌊☕<br><br>
             <strong>Could we be a lovely routine in each other's lives as good friends? 🤝✨👯‍♀️</strong>
@@ -103,11 +94,8 @@
 
     <!-- Success Screen -->
     <div class="card success-content" id="successCard">
-        <div class="img-container">
-            <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHp1bW4yYTNid2V3azI5MnJ6a2R2ZnExczE4bzR2azk0Ynd5d2t2YyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/MDJ9IbxxvDUQM/giphy.gif" alt="Happy GIF">
-        </div>
         <h1 style="color: #e63946;">The start of a wonderful friendship routine! 🎉💛</h1>
-        <p style="color: #555; margin-bottom: 25px; font-size: 15px;">Let's start our first friendly chat and break the routine... ☕💬</p>
+        <p style="color: #444; margin-bottom: 25px; font-size: 15px; font-weight: 500;">Let's start our first friendly chat and break the routine... ☕💬</p>
         
         <a id="whatsappLink" href="https://wa.me/201100924135" style="text-decoration: none;">
             <button class="btn" style="background-color: #25D366; color: white;">Chat on WhatsApp 💬✨</button>
@@ -119,15 +107,8 @@
         const yesBtn = document.getElementById('yesBtn');
         const mainCard = document.getElementById('mainCard');
         const successCard = document.getElementById('successCard');
-        const mainImg = document.getElementById('mainImg');
 
         let scale = 1;
-
-        const gifs = [
-            "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExbm9kOTN3NmFiMG96eG5ybzRxd2N3ZzE4bnRxNWJtdzIwa3p3MWp5OCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/ISOckXUvpEFeM/giphy.gif",
-            "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExM3V4M25reGN0Mms2ZzJmdm4xd2lsdXZnd3E4MGllZ3F0NGtlOHdqNSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/7sfMA85G30w1i/giphy.gif"
-        ];
-        let gifIndex = 0;
 
         function moveButton() {
             noBtn.style.position = 'fixed';
@@ -139,9 +120,6 @@
 
             scale += 0.2;
             yesBtn.style.transform = `scale(${scale})`;
-
-            mainImg.src = gifs[gifIndex % gifs.length];
-            gifIndex++;
         }
 
         noBtn.addEventListener('mouseover', moveButton);
