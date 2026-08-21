@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Philosophical Question ✨🤝</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f7f3f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        .card {
+            background: #ffffff;
+            padding: 35px 30px;
+            border-radius: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+            text-align: center;
+            max-width: 440px;
+            width: 85%;
+            position: relative;
+            border: 1px solid #eaeaea;
+        }
+
+        .img-container img {
+            width: 100%;
+            max-height: 200px;
+            object-fit: cover;
+            border-radius: 15px;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            color: #2b2d42;
+            font-size: 17px;
+            line-height: 1.6;
+            margin-bottom: 25px;
+            font-weight: 500;
+        }
+
+        .btn-group {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            margin-top: 20px;
+            min-height: 60px;
+        }
+
+        .btn {
+            padding: 12px 28px;
+            font-size: 16px;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.2s ease;
+        }
+
+        #yesBtn {
+            background-color: #e63946;
+            color: white;
+            z-index: 2;
+        }
+
+        #noBtn {
+            background-color: #a8dadc;
+            color: #1d3557;
+            position: absolute;
+        }
+
+        .success-content {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Main Card -->
+    <div class="card" id="mainCard">
+        <div class="img-container">
+            <img id="mainImg" src="https://i.ibb.co/3sX8YwQ/manchester.jpg" alt="Manchester by the sea">
+        </div>
+
+        <h1 id="questionText">
+            Midst all this quiet and passing routine, could a single conversation create a new wave? 🌊☕<br><br>
+            <strong>Could we be a lovely routine in each other's lives as good friends? 🤝✨👯‍♀️</strong>
+        </h1>
+
+        <div class="btn-group">
+            <button class="btn" id="yesBtn">Yes, absolutely! 💛🌱</button>
+            <button class="btn" id="noBtn">No 😅</button>
+        </div>
+    </div>
+
+    <!-- Success Screen -->
+    <div class="card success-content" id="successCard">
+        <div class="img-container">
+            <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHp1bW4yYTNid2V3azI5MnJ6a2R2ZnExczE4bzR2azk0Ynd5d2t2YyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/MDJ9IbxxvDUQM/giphy.gif" alt="Happy GIF">
+        </div>
+        <h1 style="color: #e63946;">The start of a wonderful friendship routine! 🎉💛</h1>
+        <p style="color: #555; margin-bottom: 25px; font-size: 15px;">Let's start our first friendly chat and break the routine... ☕💬</p>
+        
+        <a id="whatsappLink" href="https://wa.me/201100924135" style="text-decoration: none;">
+            <button class="btn" style="background-color: #25D366; color: white;">Chat on WhatsApp 💬✨</button>
+        </a>
+    </div>
+
+    <script>
+        const noBtn = document.getElementById('noBtn');
+        const yesBtn = document.getElementById('yesBtn');
+        const mainCard = document.getElementById('mainCard');
+        const successCard = document.getElementById('successCard');
+        const mainImg = document.getElementById('mainImg');
+
+        let scale = 1;
+
+        const gifs = [
+            "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExbm9kOTN3NmFiMG96eG5ybzRxd2N3ZzE4bnRxNWJtdzIwa3p3MWp5OCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/ISOckXUvpEFeM/giphy.gif",
+            "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExM3V4M25reGN0Mms2ZzJmdm4xd2lsdXZnd3E4MGllZ3F0NGtlOHdqNSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/7sfMA85G30w1i/giphy.gif"
+        ];
+        let gifIndex = 0;
+
+        function moveButton() {
+            const x = Math.random() * (window.innerWidth - noBtn.offsetWidth - 60);
+            const y = Math.random() * (window.innerHeight - noBtn.offsetHeight - 60);
+            
+            noBtn.style.left = `${x}px`;
+            noBtn.style.top = `${y}px`;
+
+            scale += 0.2;
+            yesBtn.style.transform = `scale(${scale})`;
+
+            mainImg.src = gifs[gifIndex % gifs.length];
+            gifIndex++;
+        }
+
+        noBtn.addEventListener('mouseover', moveButton);
+        noBtn.addEventListener('touchstart', (e) => {
+            e.preventDefault();
+            moveButton();
+        });
+
+        yesBtn.addEventListener('click', () => {
+            mainCard.style.display = 'none';
+            successCard.style.display = 'block';
+        });
+    </script>
+</body>
+</html>
